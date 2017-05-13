@@ -2,8 +2,8 @@
 /* Auteur: Valerian */
 
 /************* CONF LABO **************/
-var  LABEL_ECRAN = "Qgg48XS74xqAFODWvQwK/sEncRYgxXatBSuXigLkfVE="
-var  LABEL_MICRO = "Microphone (Webcam C170)";  
+var  LABEL_ECRAN = "3d1k3+Oqm9hbKwMOafct9rJdfI0CvwCX031UqgkblMg="
+var  LABEL_MICRO = "Microphone (Webcam C170)";
 /****************************************/
 
 var MESSAGE_SCREEN_READY ="init_ecran_2";
