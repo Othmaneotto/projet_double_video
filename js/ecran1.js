@@ -2,8 +2,8 @@
 /* Auteur: Valerian */
 
 /********** CONF DU LABO ************************/
-var  LABEL_ECRAN = "BisonCam"
-var  LABEL_MICRO = "Microphone (Realtek High Definition Audio)";
+var  LABEL_ECRAN = "7A1JBUfffx1DN8EiK/i7nSRLEogN0zegWNqAzdq1kXc="
+var  LABEL_MICRO = "Microphone (Webcam C170)";
 //*************************************************************/
 
 var MESSAGE_SCREEN_READY ="init_ecran_1";

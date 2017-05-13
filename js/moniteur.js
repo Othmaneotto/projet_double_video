@@ -5,8 +5,8 @@
 /* Auteur Valerian*/
 
 /******************* Conf LABO ***********************/
-var LABEL_ECRAN1 = "HD Pro Webcam C920";
-var LABEL_ECRAN2 = "HD Pro Webcam C920-2";
+var LABEL_ECRAN1 = "7A1JBUfffx1DN8EiK/i7nSRLEogN0zegWNqAzdq1kXc=";
+var LABEL_ECRAN2 = "Qgg48XS74xqAFODWvQwK/sEncRYgxXatBSuXigLkfVE=";
 /******************************************************/
 var newCanvas;
 var context;
@@ -42,7 +42,7 @@ var playingSequence = false;
 var i=0;
 var dessineMereLive = false;
 
-var scenarioPath = "http://localhost/doublevideo/scenarios/";
+var scenarioPath = "http://localhost/projet_double_video/scenarios/";
 
 var arraySequence = [];
 var currentSequence = 0;
@@ -179,8 +179,8 @@ function setupCanvasLiveDrawing(){
 et de l enfant
  */
 function openClients(){
-    fenetreEcran2 = window.open("http://localhost/doublevideo/ecran2.html","ecran2","left=-10000,right=5760,height=10000px,width=10000px,location=0,menubar=0,scrollbars=0,status=0,titlebar=0,toolbar=0");
-	fenetreEcran1 = window.open("http://localhost/doublevideo/ecran1.html","ecran1","left=3839,right=5760,height=10000px,width=10000px,location=0,menubar=0,scrollbars=0,status=0,titlebar=0,toolbar=0");
+    fenetreEcran2 = window.open("http://localhost/projet_double_video/ecran2.html","ecran2","left=-10000,right=5760,height=10000px,width=10000px,location=0,menubar=0,scrollbars=0,status=0,titlebar=0,toolbar=0");
+	fenetreEcran1 = window.open("http://localhost/projet_double_video/ecran1.html","ecran1","left=3839,right=5760,height=10000px,width=10000px,location=0,menubar=0,scrollbars=0,status=0,titlebar=0,toolbar=0");
     this.window.name="moniteur";
 
 }
@@ -196,7 +196,7 @@ function modifierScenario(){
 
 function creerScenario(){
 	localStorage.setItem("scenario","");
-	fenetreCreerScenario = window.open("http://localhost/doublevideo/html/creer_scenario.html","scenario","height=500,width=500");
+	fenetreCreerScenario = window.open("http://localhost/projet_double_video/html/creer_scenario.html","scenario","height=500,width=500");
 }
 
 function initStartScenario(){
@@ -242,7 +242,7 @@ function checkScenario(filename,option){
 				startScenario();
 			}else if(option=="mod"){
 				localStorage.setItem("scenario",filename);
-				fenetreCreerScenario = window.open("http://localhost/doublevideo/html/creer_scenario.html","scenario","{height:500,width:500}");
+				fenetreCreerScenario = window.open("http://localhost/projet_double_video/html/creer_scenario.html","scenario","{height:500,width:500}");
 			}
 			if(!isrunning){
 				setNotifBar("<b>Scénario : "+filename+"</b></br>"
@@ -270,7 +270,7 @@ function modifierScenario(){
 /*************** Point d'entree  pour modification des scenarios *********/
 function creerScenario(){
 	localStorage.setItem("scenario","");
-	fenetreCreerScenario = window.open("http://localhost/doublevideo/html/creer_scenario.html","scenario","height=500,width=500");
+	fenetreCreerScenario = window.open("http://localhost/projet_double_video/html/creer_scenario.html","scenario","height=500,width=500");
 }
 
 

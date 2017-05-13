@@ -2,8 +2,8 @@
 /* Auteur: Valerian */
 
 /************* CONF LABO **************/
-var  LABEL_ECRAN = "HD Pro Webcam C920"
-var  LABEL_MICRO = "Microphone (2- HD Pro Webcam C920)";  
+var  LABEL_ECRAN = "Qgg48XS74xqAFODWvQwK/sEncRYgxXatBSuXigLkfVE="
+var  LABEL_MICRO = "Microphone (Webcam C170)";  
 /****************************************/
 
 var MESSAGE_SCREEN_READY ="init_ecran_2";
