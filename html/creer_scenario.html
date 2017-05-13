@@ -1,0 +1,533 @@
+<!-- 
+Menu de creation d'un scenario
+  -->
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<script src="../lib/jquery-1.12.4.js"></script>
+		<script src="../lib/jquery-ui-1.11.4/jquery-ui.js"></script>
+		<link rel="stylesheet" type="text/css" href="../lib/semantic/dist/semantic.css">
+		<link rel="stylesheet" type="text/css" href="../lib/jquery-ui-1.11.4/jquery-ui.theme.css">
+		<link rel="stylesheet" type="text/css" href="../css/creer_scenario.css">
+    </head>
+
+    <body> 
+		<div class="ui grid">
+			<div class="ui centered row ">
+				<h1 class="ui centered header">Creation d'un scenario</h1>
+			</div>
+			<div class="ui centered row ">
+				<label>Nom du scenario : </label>
+				<div  id="divNomScenario" class="ui input">
+					<input type="text" id="nomScenario" name="nameScenario" placeholder="Nom du scenario">
+				</div>
+			</div>
+			<div class="ui centered row ">
+				<div class="ui button" onclick="validerScenario()">Valider scénario</div>
+			</div>
+			<div class="one wide column">
+			</div>
+			<div class="three wide column">
+				<div id="param_segment" class="ui segment ">
+					<div id="list_sequence" class="ui list">
+					</div>
+					<div class="ui section divider"></div>
+					<div class="ui grid">
+						<div class="ui centered row">
+							<div class="ui button" onclick="addSequence()">Ajouter séquence</div>
+						</div>
+						<div class="ui centered row">
+							<div class="ui button" onclick="suppSequence()">Supprimer séquence</div>
+						</div>
+					</div>
+				</div>
+			</div>
+<!-- 			Parametrage de la sequence -->
+			<div class="eleven wide column paramSequence">
+				<div class="ui segment ">
+					<form class="ui form">
+					  <div class="inline field">
+						<label>Nom de la sequence</label>
+						<input id="nomSequence" type="text" name="nomSequence" placeholder="Nom de la sequence">
+					  </div>
+					  <div class="inline fields">
+						  <label for="duree">Choix de la duree:</label>
+						  <div class="inline field">
+							<input id="minute_sequence" type="text" name="minutes" placeholder="00">
+						  </div>
+						  
+						  <div class="inline field">
+							<label>:</label>
+							<input id="seconde_sequence" type="text" name="secondes" placeholder="00">
+						  </div>
+						  <label for="duree">minutes</label>
+					  </div>
+					  <!-- Choix ecrans -->
+					  <div class="ui top attached tabular menu">
+					    <a class="active item" data-tab="ecr1">Écran 1</a>
+					    <a class="item" data-tab="ecr2">Écran 2</a>
+					  </div>
+					  <!-- Choix actions Ecran 1 -->
+					  <div id="tab_ecr1" class="ui bottom attached active tab segment" data-tab="ecr1">
+						  <div class="inline fields">
+							<label for="action_ecr1">Choix de l'action:</label>
+							<div class="field">
+							  <div class="ui radio checkbox">
+								<input class="checkbox_live" type="radio" name="action_ecr1" value="live" tabindex="0" class="hidden">
+								<label>Live</label>
+							  </div>
+							</div>
+							<div class="field">
+							  <div class="ui radio checkbox">
+								<input class="checkbox_differer" type="radio" name="action_ecr1" value="differer" tabindex="0" class="hidden">
+								<label>Différé</label>
+							  </div>
+							</div>
+							<div class="field">
+							  <div class="ui radio checkbox">
+								<input class="checkbox_video" type="radio" name="action_ecr1" value="video" tabindex="0" class="hidden">
+								<label>Video</label>
+							  </div>
+							</div>
+							<div class="field">
+							  <div class="ui radio checkbox">
+								<input class="checkbox_image" type="radio" name="action_ecr1" value="image" tabindex="0" class="hidden">
+								<label>Image</label>
+							  </div>
+							</div>
+							<div class="field">
+							  <div class="ui radio checkbox">
+								<input class="checkbox_sequence" type="radio" name="action_ecr1" value="sequence" tabindex="0" class="hidden">
+								<label>Replay séquence</label>
+							  </div>
+							</div>
+								<div class="field">
+								  <div class="ui radio checkbox">
+									<input class="checkbox_audio" type="radio" name="action_ecr1" value="audio" tabindex="0" class="hidden">
+									<label>Audio</label>
+								  </div>
+								</div>
+						  </div>
+						  <div id="param_ecr1" style="min-height:300px;">
+							<div id="param_ecr1_live"></div>
+							<div id="param_ecr1_dif" class="param1">
+								<div class="inline fields">
+									<div class="two wide field">
+										<div class="ui toggle checkbox">
+										  <input type="checkbox" class="differerVideo">
+										  <label>Video</label>
+										</div>
+									</div>
+									<div class="three wide field">
+										<input type="text" class="differerVideo">
+									</div>
+									<div class="three wide field">
+										<div class="ui selection dropdown videoDiffererDropdown">
+										  <i class="dropdown icon"></i>
+										  <div class="text">temps</div>
+										  <div class="menu">
+											<div class="item" data-value="ms">millisecondes</div>
+											<div class="item" data-value="sc">secondes</div>
+										  </div>
+										</div>
+									</div>
+								</div>
+								<div class="inline fields">
+									<div class="two wide field">
+										<div class="ui toggle checkbox">
+										  <input type="checkbox" class="differerAudio">
+										  <label>Audio</label>
+										</div>
+									</div>
+									<div class="three wide field">
+										<input type="text" class="differerAudio">
+									</div>
+									<div class="three wide field">
+										<div class="ui selection dropdown audioDiffererDropdown">
+										  <i class="dropdown icon"></i>
+										  <div class="text">temps</div>
+										  <div class="menu">
+											<div class="item" data-value="ms">millisecondes</div>
+											<div class="item" data-value="sc">secondes</div>
+										  </div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="param_ecr1_video" class="param1">
+								<div class="chooseFileVideo">
+									<div class="inline field">
+										<label>Choix du fichier : </label>
+										<input class="fileVideo" type="file" name="video" />
+										<input class="fileVideo" type="text" name="video" />
+									</div>
+								</div>
+								<div class="ui grid" style="margin-top:50px;margin-bottom:50px;">
+									<div class="eight wide column">
+										<div class="inline field">
+											<input value="fullscreen" type="radio" name="videoType_ecr1" tabindex="0" class="  radioTypeVideo hidden">
+											<label>Fullscreen</label>
+										</div>
+									</div>
+									<div class=" eight wide column">
+										<div class="inline field">
+											<input value="perso" type="radio" name="videoType_ecr1" tabindex="0" class="hidden radioTypeVideo">
+											<label>Personnalisé : </label>
+										</div>
+										<div class="fields">
+											<div class="field">
+												<label>x</label>
+												<input type="text" class="video_ecr_x" placeholder="0">
+											</div>
+											<div class="field">
+												<label>y</label>
+												<input type="text" class="video_ecr_y" placeholder="0">
+											</div>
+										</div>
+										<div class="fields">
+											<div class="field">
+												<label>Largeur</label>
+												<input type="text" class="video_ecr_w" placeholder="0">
+											</div>
+											<div class="field">
+												<label>Longueur</label>
+												<input type="text" class="video_ecr_h" placeholder="0">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="chooseFiligrane">
+									<div class="inline fields">
+										<div class="ui toggle checkbox">
+										  <input type="checkbox" class="video_ecr_fili">
+										  <label>Effet filigrane :</label>
+										</div>
+										<input type="text" class="video_ecr_opacity" placeholder="0">
+										<label>%</label>
+									</div>
+								</div>
+							</div>
+							<div id="param_ecr1_image" class="param1">
+								<div class="chooseFileImage">
+									<div class="inline field">
+										<label>Choix du fichier : </label>
+										<input type="file" name="nom" class="fileImage" />
+										<input class="fileImage" type="text" name="image" />
+									</div>
+								</div>
+								<div class="ui grid" style="margin-top:50px;margin-bottom:50px;">
+									<div class="eight wide column">
+										<div class="inline field">
+											<input value="fullscreen" type="radio" name="imageType_ecr1" tabindex="0" class="hidden radioTypeImage">
+											<label>Fullscreen</label>
+										</div>
+									</div>
+									<div class=" eight wide column">
+										<div class="inline field">
+											<input value="perso" type="radio" name="imageType_ecr1" tabindex="0" class="hidden radioTypeImage">
+											<label>Personnalisé : </label>
+										</div>
+										<div class="fields">
+											<div class="field">
+												<label>x</label>
+												<input type="text" class="image_ecr_x" placeholder="0">
+											</div>
+											<div class="field">
+												<label>y</label>
+												<input type="text" class="image_ecr_y" placeholder="0">
+											</div>
+										</div>
+										<div class="fields">
+											<div class="field">
+												<label>Largeur</label>
+												<input type="text" class="image_ecr_w" placeholder="0">
+											</div>
+											<div class="field">
+												<label>Longueur</label>
+												<input type="text" class="image_ecr_h" placeholder="0">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="chooseFiligrane">
+									<div class="inline fields">
+										<div class="ui toggle checkbox">
+										  <input type="checkbox" class="image_ecr_fili">
+										  <label>Effet filigrane :</label>
+										</div>
+										<input type="text" class="image_ecr_opacity" placeholder="0">
+										<label>%</label>
+									</div>
+								</div>
+							</div>
+							<div id="param_ecr1_sequence" class="param1">
+								<div class="inline field">
+									<label>Choix de la séquence</label>
+									<div class="ui selection dropdown sequence_dropdown">
+									  <i class="dropdown icon"></i>
+									  <div class="text">Choix séquence</div>
+									  <div class="menu list_sequence_dropdown">
+									  </div>
+									</div>
+								</div>
+								<div class="inline field">
+									<label>Choix du flux</label>
+									<div class="ui selection dropdown ecr_flux_dropdown">
+									  <i class="dropdown icon"></i>
+									  <div class="text">Flux</div>
+									  <div class="menu">
+										<div data-value="audio" class="item">Audio</div>
+										<div data-value="video" class="item">Video</div>
+										<div data-value="audiovideo" class="item">Audio/Video</div>
+									  </div>
+									</div>
+								</div>
+							</div>
+							<div id="param_ecr1_audio" class="param1">
+								<div class="chooseFileAudio">
+									<div class="inline field">
+										<label>Choix du fichier : </label>
+										<input type="file" class="ecr_chooseFileAudio" />
+										<input class="fileAudio" type="text" name="audio" />
+									</div>
+								</div>
+							</div>
+						  </div>
+					  </div>
+					  <div  id="tab_ecr2" class="ui bottom attached tab segment" data-tab="ecr2">
+						<div class="inline fields">
+							<label for="action_ecr2">Choix de l'action:</label>
+							<div class="field">
+							  <div class="ui radio checkbox">
+								<input class="checkbox_live" type="radio" value="live" name="action_ecr2" value="live" tabindex="0" class="hidden">
+								<label>Live</label>
+							  </div>
+							</div>
+							<div class="field">
+							  <div class="ui radio checkbox">
+								<input class="checkbox_differer" type="radio" value="differer" name="action_ecr2" tabindex="0" class="hidden">
+								<label>Différé</label>
+							  </div>
+							</div>
+							<div class="field">
+							  <div class="ui radio checkbox">
+								<input class="checkbox_video" type="radio" value="video" name="action_ecr2" value="video" tabindex="0" class="hidden">
+								<label>Video</label>
+							  </div>
+							</div>
+							<div class="field">
+							  <div class="ui radio checkbox">
+								<input class="checkbox_image" type="radio" value="image" name="action_ecr2" tabindex="0" class="hidden">
+								<label>Image</label>
+							  </div>
+							</div>
+							<div class="field">
+							  <div class="ui radio checkbox">
+								<input class="checkbox_replay" type="radio" value="sequence" name="action_ecr2" tabindex="0" class="hidden">
+								<label>Replay séquence</label>
+							  </div>
+							</div>
+							<div class="field">
+							  <div class="ui radio checkbox">
+								<input class="checkbox_audio" type="radio" value="audio" name="action_ecr2" tabindex="0" class="hidden">
+								<label>Audio</label>
+							  </div>
+							</div>
+						  </div>
+						  <div id="param_ecr2">
+							<div class="param_ecr2_live" class="param2"></div>
+							<div id="param_ecr2_dif" class="param2">
+								<div class="inline fields">
+									<div class="two wide field">
+										<div class="ui toggle checkbox">
+										  <input type="checkbox" class="differerVideo">
+										  <label>Video</label>
+										</div>
+									</div>
+									<div class="three wide field">
+										<input type="text" class="differerVideo">
+									</div>
+									<div class="three wide field">
+										<div class="ui selection dropdown videoDiffererDropdown">
+										  <i class="dropdown icon"></i>
+										  <div class="text">temps</div>
+										  <div class="menu">
+											<div class="item" data-value="ms">millisecondes</div>
+											<div class="item" data-value="sc">secondes</div>
+										  </div>
+										</div>
+									</div>
+								</div>
+								<div class="inline fields">
+									<div class="two wide field">
+										<div class="ui toggle checkbox">
+										  <input type="checkbox" class="differerAudio">
+										  <label>Audio</label>
+										</div>
+									</div>
+									<div class="three wide field">
+										<input type="text" class="differerAudio">
+									</div>
+									<div class="three wide field">
+										<div class="ui selection dropdown audioDiffererDropdown">
+										  <i class="dropdown icon"></i>
+										  <div class="text">temps</div>
+										  <div class="menu">
+											<div class="item" data-value="ms">millisecondes</div>
+											<div class="item" data-value="sc">secondes</div>
+										  </div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="param_ecr2_video" class="param2">
+								<div class="chooseFileVideo">
+									<div class="inline field">
+										<label>Choix du fichier : </label>
+										<input class="fileVideo" type="file" name="ecr2_choosefile_video" />
+										<input class="fileVideo" type="text" name="video" />
+									</div>
+								</div>
+								<div class="ui grid" style="margin-top:50px;margin-bottom:50px;">
+									<div class="eight wide column">
+										<div class="inline field">
+											<input value="fullscreen" type="radio" name="videoType_ecr2" tabindex="0" class="hidden radioTypeVideo">
+											<label>Fullscreen</label>
+										</div>
+									</div>
+									<div class=" eight wide column">
+										<div class="inline field">
+											<input value="perso" type="radio" name="videoType_ecr2" tabindex="0" class="hidden radioTypeVideo">
+											<label>Personnalisé : </label>
+										</div>
+										<div class="fields">
+											<div class="field">
+												<label>x</label>
+												<input type="text" class="video_ecr_x" placeholder="0">
+											</div>
+											<div class="field">
+												<label>y</label>
+												<input type="text" class="video_ecr_y" placeholder="0">
+											</div>
+										</div>
+										<div class="fields">
+											<div class="field">
+												<label>Largeur</label>
+												<input type="text" class="video_ecr_w" placeholder="0">
+											</div>
+											<div class="field">
+												<label>Longueur</label>
+												<input type="text" class="video_ecr_h" placeholder="0">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="chooseFiligrane">
+									<div class="inline fields">
+										<div class="ui toggle checkbox">
+										  <input type="checkbox" class="video_ecr_fili">
+										  <label>Effet filigrane :</label>
+										</div>
+										<input type="text" class="video_ecr_opacity" placeholder="0">
+										<label>%</label>
+									</div>
+								</div>
+							</div>
+							<div id="param_ecr2_image" class="param2">
+								<div class="chooseFileImage">
+									<div class="inline field">
+										<label>Choix du fichier : </label>
+										<input type="file" class="fileImage"/>
+										<input class="fileImage" type="text" name="image" />
+									</div>
+								</div>
+								<div class="ui grid" style="margin-top:50px;margin-bottom:50px;">
+									<div class="eight wide column">
+										<div class="inline field">
+											<input value="fullscreen" type="radio" name="imageType_ecr2" tabindex="0" class="hidden radioTypeImage">
+											<label>Fullscreen</label>
+										</div>
+									</div>
+									<div class=" eight wide column">
+										<div class="inline field">
+											<input value="perso" type="radio" name="imageType_ecr2" tabindex="0" class="hidden radioTypeImage">
+											<label>Personnalisé : </label>
+										</div>
+										<div class="fields">
+											<div class="field">
+												<label>x</label>
+												<input type="text" class="image_ecr_x" placeholder="0">
+											</div>
+											<div class="field">
+												<label>y</label>
+												<input type="text" class="image_ecr_y" placeholder="0">
+											</div>
+										</div>
+										<div class="fields">
+											<div class="field">
+												<label>Largeur</label>
+												<input type="text" class="image_ecr_w" placeholder="0">
+											</div>
+											<div class="field">
+												<label>Longueur</label>
+												<input type="text" class="image_ecr_h" placeholder="0">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="chooseFiligrane">
+									<div class="inline fields">
+										<div class="ui toggle checkbox">
+										  <input type="checkbox" class="image_ecr_fili">
+										  <label>Effet filigrane :</label>
+										</div>
+										<input type="text" class="image_ecr_opacity" placeholder="0">
+										<label>%</label>
+									</div>
+								</div>
+							</div>
+							<div id="param_ecr2_sequence" class="param2">
+								<div class="inline field">
+									<label>Choix de la séquence</label>
+									<div class="ui selection dropdown sequence_dropdown">
+									  <i class="dropdown icon"></i>
+									  <div class="text">Choix séquence</div>
+									  <div class="menu">
+									  </div>
+									</div>
+								</div>
+								<div class="inline field">
+									<label>Choix du flux</label>
+									<div class="ui selection dropdown ecr_flux_dropdown">
+									  <i class="dropdown icon"></i>
+									  <div class="text">Flux</div>
+									  <div class="menu">
+										<div data-value="audio" class="item">Audio</div>
+										<div data-value="video" class="item">Video</div>
+										<div data-value="audiovideo" class="item">Audio/Video</div>
+									  </div>
+									</div>
+								</div>
+							</div>
+							<div id="param_ecr2_audio" class="param2">
+								<div class="chooseFileAudio">
+									<div class="inline field">
+										<label>Choix du fichier : </label>
+										<input type="file" class="ecr_chooseFileAudio" />
+										<input class="fileAudio" type="text" name="audio" />
+									</div>
+								</div>
+							</div>
+						  </div>
+					  </div>
+					</form>
+				</div>
+			</div>
+			<div class="one wide column">
+			</div>
+		</div>
+		<script src="../lib/semantic/dist/semantic.js"></script>
+		<script src="../js/creer_scenario.js"></script>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+
+LIENS UTILES :
+
+Exemple d'utilisation du WEB AUDIO API  et record canvas + audio : 
+https://hacks.mozilla.org/2016/04/record-almost-everything-in-the-browser-with-mediarecorder/
+Exemple d'utilisation du media source pour le differer video :
+http://html5-demos.appspot.com/static/media-source.html
+MediaRecorder :
+https://addpipe.com/blog/mediarecorder-api/
+WebWorkers :
+http://www.html5rocks.com/en/tutorials/workers/basics/
+Lib FileSaver :
+https://github.com/eligrey/FileSaver.js/
+Different scenarios d'utilisation du web audio API avec un MediaStream:
+https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/webrtc-integration.html 
+	

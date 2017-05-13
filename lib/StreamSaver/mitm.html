@@ -1,0 +1,64 @@
+<!--
+	mitm.html is the lite "man in the middle"
+
+	This is only meant to signal the opener's messageChannel to
+	the service worker
+	The service worker is capitable of intercepting all request and fork theire
+	own "fake" response - wish we are going to craft
+	when the worker then recives a stream then the worker will tell the opener
+	to open up a link that will start the download
+-->
+<script>
+let controller = navigator.serviceWorker.controller
+let host = "jimmywarting.github.io"
+
+// Service worker only works on https, 127.0.0.1 and localhost
+if (window.location.host == host && window.location.protocol != "https:")
+    window.location.protocol = "https:"
+
+function pair(message, port) {
+	// This sends the message data as well as transferring messageChannel.port2 to the service worker.
+    // The service worker can then use the transferred port to reply via postMessage(), which
+    // will in turn trigger the onmessage handler on messageChannel.port1.
+    // See https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage
+    controller.postMessage(message, [port])
+}
+
+// message event is the first thing we need to setup a listner for
+// don't want the opener to do a random timeout - instead they can listen for
+// the ready event
+window.onmessage = event => {
+    if(!event.ports || !event.ports.length) {
+        // It's important to have a messageChannel, don't want to interfair
+        // with other simultainus downloads
+
+        throw new TypeError("Mehhh! You didn't send a messageChannel")
+    }
+
+    // Register the worker, then forward the dataChannel to the worker
+    // So they can talk directly, so we don't have to be "the middle man" any
+    // longer
+    navigator.serviceWorker.getRegistration('./').then(sw => sw
+		? pair(event.data, event.ports[0])
+		: navigator.serviceWorker.register('sw.js', {scope: './'})
+			.then(() => navigator.serviceWorker.ready)
+			.then(() => {
+				// the navigator.serviceWorker.controller is frozen and allways
+				// null, so instead of reloading the page we get the controller
+				// from a new temporary window, sucks i know...
+				iframe = document.createElement('iframe')
+				iframe.src = location.href
+                iframe.onload = () => {
+                    controller = iframe.contentWindow.controller
+                    pair(event.data, event.ports[0])
+                    iframe.remove()
+                }
+				document.body.appendChild(iframe)
+			})
+	)
+}
+
+// The opener can't listen to onload event, so we need to help em out!
+// (telling them that we are ready to accept postMessage's)
+opener && opener.postMessage('StreamSaver::loadedPopup', '*')
+</script>

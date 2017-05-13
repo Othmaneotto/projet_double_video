@@ -1,0 +1,1 @@
+{"nom":"DIFFERER","sequences":[{"id":1,"nom":"sequence1","minute":"0","seconde":"30","action1":{"nom":"differer","param":{"video":"3","typeVideo":"sc"}},"action2":{"nom":"live","param":{}}}]}

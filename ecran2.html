@@ -1,0 +1,38 @@
+<!-- 
+CLIENT DU BEBE
+  -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script> -->
+		<meta http-equiv="Content-Type" content="text/html;utf-8" />
+		<script src="lib/jquery-1.12.4.js"></script>
+	    <link rel="stylesheet" type="text/css" href="lib/semantic/dist/semantic.css">
+		<link rel="stylesheet" type="text/css" href="css/ecran2.css">
+    </head>
+
+    <body>
+		<div class="ui grid">
+			<div class="sixteen wide column" style="height:100%;">
+				<div id="divvideo">
+				<canvas id="canvas" style="border:1px solid #000000;"></canvas>
+		<!-- 			<audio id="recordAudio" autoplay style="width:40%;"></audio>
+					<audio id="containerAudio" autoplay style="width:40%;"></audio>
+					<video id="recordVideo" autoplay style="width:40%;"></video>
+					//Container de base-->
+					<video id="containerVideo" autoplay muted style="width:100%;"></video>
+					<audio id="containerAudio" muted></audio> 
+					<video id="containerVideoTemp" muted style="width:100%;height:100%;display:none;"></video>
+					<video id="containerVideoPlay" muted style="width:100%;height:100%;display:none;"></video>
+				</div>
+			</div>
+		</div>
+<!--         <input type="button" id="stop_record" onclick="stopRecord()" value="Stop recording"></input>
+        <input type="button" id="start_record" onclick="startRecord()" value="Start recording"></input>
+        <input type="button" id="play_record" onclick="createMediaSource()" value="Play Recorded video"></input> -->
+		<script src="lib/semantic/dist/semantic.js"></script>
+		<script src="lib/FileSaver.js"></script>
+		<script src="js/video_util.js"></script>
+        <script src="js/ecran2.js"></script>
+    </body>
+</html>

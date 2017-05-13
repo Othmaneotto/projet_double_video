@@ -1,0 +1,107 @@
+<!-- 
+CONTROLEUR
+  -->
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<script src="lib/jquery-1.12.4.js"></script>
+	    <link rel="stylesheet" type="text/css" href="lib/semantic/dist/semantic.css">
+	    <link rel="stylesheet" type="text/css" href="css/moniteur.css">
+    </head>
+
+    <body>
+		<div  id="main_grid" class="ui grid">
+			<div class="ui row">
+				<div class="two wide column">
+				</div>
+				<div class="four wide column" style="height:350px;" >
+					<div class="live-example">
+<!-- 					 <iframe class="link-preview" src="http://localhost/doublevideo/ecran2.html" height="100%" width="100%" frameborder="0"></iframe>  -->
+					</div>
+				</div>
+				<div class="four wide column" style="height:350px;">
+					<canvas id="canvas_live" style="border:1px solid #000000;"></canvas>
+				</div>
+				<div class="four wide column" style="height:350px;">
+<!-- 					<iframe src="http://localhost/doublevideo/ecran1.html"></iframe>  -->
+				</div>
+				<div class="two wide column">
+				</div>
+			</div>
+			<div class="ten wide centered column">
+					<div class="ui raised center aligned segment" id="tableauDeBord">
+						<div class="ui  row">
+							<button class="ui labeled circular icon green button" id="playSequenceButton" onclick="initStartScenario()" style="min-height:50px;width:15%;">
+							  <i class="play icon"></i>
+							  Start
+							</button>
+							
+							<button class="ui labeled  circular icon blue button" id="passerSequenceButton" onclick="passerSequence()" style="min-height:50px;width:17%;">
+							  <i class="step forward icon"></i>
+							  <label>Passer séquence</label>
+							</button>
+						</div>
+						<div class="ui row" style = "margin-top:30px;"	>
+								<div class="ui segment" id="segment_notif">
+									<div class="ui grid" >
+										<div class="one wide column" >
+											<i class="checkmark green huge icon" id="notif_ok" style="display:none;"></i>
+											<i class="warning sign red huge icon" id="notif_warn" style="display:none;"></i>
+											<div class="ui active inline loader" id="notif_loader">
+											</div>
+										</div>
+										<div class="ten wide left aligned column" id="notif_text" >
+											Pas de scénarios choisis
+										</div>
+									</div>
+								</div>
+						</div>
+						<div class="ui centered row">
+							<div class="ten wide column">
+								<div class="ui segment">
+									<h2 class="ui left floated header">Gestion des scénarios</h2>
+									<div class="ui clearing divider"></div>
+									<div class="ui grid" style="margin-top:10px;">
+										<div class="ui row">
+ 										<div class="three wide column">
+												<div class="ui left action input" id="choixScenario">
+												  <button class="ui teal labeled icon button" onclick="triggerChooseScenario()" id="choixScenarioButton">
+													<i class="file video outline icon"></i>
+													Choisir scénario
+												  </button>
+												  <input id="chooseFilet" type="text" class="chooseFile">
+												  <input id="chooseFilef" type="file" class="chooseFile" style="display:none;">
+												</div>
+											</div>
+											<div class="three wide middle aligned column">
+											</div>
+											<div class=" seven wide column"></div>
+											<div class=" three wide column">
+												<div class="ui button icon " onclick="creerScenario() " id="creerScenarioButton">
+													<i class="plus icon"></i>
+													Creer un scenario
+												</div>
+											</div>
+										</div>
+										<div class="ui row">
+											<div class=" seven wide column">
+												<div class="ui button" id="modifierScenarioButton" onclick="modifierScenario()">Modifier le scenario</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+			</div>
+			<video id="containerVideoMere" autoplay muted></video>
+			<video id="containerVideoBebe" autoplay muted></video>
+		</div>
+		
+		<canvas id="canvas_resize" style="display:none;"></canvas>
+		<script src="js/video_util.js"></script>
+		<script src="lib/semantic/dist/semantic.js"></script>
+		<script src="js/moniteur.js"></script>
+    </body>
+</html>

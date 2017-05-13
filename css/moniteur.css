@@ -1,0 +1,36 @@
+html,body{
+	height:100%
+}
+
+#main_grid{
+	height:100%;
+}
+
+#containerVideoMere{
+	position: absolute; 
+	display:none; 
+}
+
+#containerVideoBebe{
+	position: absolute; 
+	display:none; 
+}
+
+.live-example {
+  height: 200px !important;
+  overflow: hidden;
+}
+.link-preview {
+  width: 1920px;
+  height: 1080px;
+  border: none;
+  pointer-events: none;
+  -webkit-transform: scale(0.3);
+  -moz-transform: scale(0.3);
+  -ms-transform: scale(0.3);
+  transform: scale(0.3);
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
