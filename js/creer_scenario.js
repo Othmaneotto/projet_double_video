@@ -1,7 +1,7 @@
 var maxSequence = 0;
 var currentSequence = 0;
 var arraySequence = [];
-var scenarioPath = "http://localhost/doublevideo/scenarios/";
+var scenarioPath = "http://localhost/projet_double_video/scenarios/";
 var scenario;
 
 /* Structure d'un scenario
@@ -549,7 +549,7 @@ function saveScenario(scenario,file){
         type: "GET",
         dataType : 'json',
         async: false,
-        url: 'http://localhost/doublevideo/php/scenario_saver.php',
+        url: 'http://localhost/projet_double_video/php/scenario_saver.php',
         data: { 
 			data: JSON.stringify(scenario),
 			filename: file
