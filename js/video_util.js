@@ -43,7 +43,7 @@ var VideoUtil = {
 		//On cherche la camera correspondante au bebe
  		arrayVideo.forEach(function(device){
 			if(device.type == "videoinput"){ 	
-				if(device.name == label_camera){
+				if(device.id == label_camera){
 					dev = device;
 				}
 			}

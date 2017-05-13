@@ -1,0 +1,1 @@
+{"nom":"Test","sequences":[{"id":1,"nom":"Live1","minute":"1","seconde":"0","action1":{"nom":"live","param":{}},"action2":{"nom":"live","param":{}}},{"id":2,"nom":"Test2","minute":"1","seconde":"0","action1":{"nom":"live","param":{}},"action2":{"nom":"live","param":{}}}]}
