@@ -2,7 +2,7 @@
 /* Auteur: Valerian */
 
 /********** CONF DU LABO ************************/
-var  LABEL_ECRAN = "7A1JBUfffx1DN8EiK/i7nSRLEogN0zegWNqAzdq1kXc="
+var  LABEL_ECRAN = "24UG6xmElNHn4ZAm8ABmVH1HyjMvNzpBW36UsRISpUU="
 var  LABEL_MICRO = "Microphone (Webcam C170)";
 //*************************************************************/
 
